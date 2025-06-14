@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Silent Soul - Emotional Wellness</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0a1722, #142e43, #0b1e3c);
+      color: #e1e8f0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 16px;
+      scroll-padding-top: 80px;
+    }
+    a {
+      color: #72b8f7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #a0d2ff;
+      outline: none;
+    }
+    h1, h2, h3 {
+      margin: 0 0 0.5em 0;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    p {
+      margin: 0 0 1.25em 0;
+      color: #cbd6e8dd;
+    }
+    /* Container */
+    .container {
+      width: min(90vw, 720px);
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 16px 48px 16px;
+    }
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #537895 0%, #092756 100%);
+      color: #c9daff;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      font-size: 1rem;
+      transition:
+        background-color 0.3s ease,
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s ease;
+      box-shadow: 0 8px 16px rgba(27, 44, 72, 0.75);
+      text-shadow: 0 0 4px #476aab99;
+      text-align: center;
+      text-decoration: none;
+      min-width: 200px;
+      height: 56px;
+      user-select: none;
+      outline-offset: 4px;
+    }
+    .btn:focus-visible {
+      outline: 3px solid #a0d2ffcc;
+      outline-offset: 6px;
+    }
+    .btn:hover,
+    .btn:focus {
+      background: linear-gradient(135deg, #6393f7, #2a53de);
+      box-shadow: 0 10px 28px rgba(40, 68, 147, 0.95);
+      transform: translateY(-4px);
+      text-decoration: none;
+      outline-offset: 6px;
+    }
+    /* Hero Section */
+    header.hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 112px 24px 160px 24px;
+      text-align: center;
+      min-height: 65vh;
+      color: #ced8fa;
+      overflow: hidden;
+      background: linear-gradient(135deg, #152e4d 0%, #0a1a2a 90%);
+      box-shadow: inset 0 0 120px 64px #12283c88;
+    }
+    /* Animated star field */
+    .starfield {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+      filter: drop-shadow(0 0 1px #86a5ffcc);
+    }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      opacity: 0.85;
+      animation: twinkle 3.25s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 1px #85a3ffcc);
+      will-change: transform, opacity;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.85; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.8); }
+    }
+    /* Hero Text */
+    .hero h1 {
+      font-size: 2.9rem;
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      user-select: none;
+      letter-spacing: -0.02em;
+      text-shadow:
+        0 0 14px #5680faaa,
+        0 0 24px #2846fa77;
+    }
+    .hero p {
+      font-size: 1.35rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 3rem;
+      color: #adbbecdd;
+      letter-spacing: 0.01em;
+      font-weight: 500;
+      text-shadow: 0 0 16px #1a2c5baa;
+      line-height: 1.5;
+    }
+    /* Section Titles */
+    section > h2.section-title {
+      font-size: 2.75rem;
+      color: #c5d0f9ee;
+      font-weight: 700;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #4f6cd9cc;
+      margin-bottom: 32px;
+      user-select: none;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      letter-spacing: -0.02em;
+      text-shadow: 0 0 8px #4265e3aa;
+    }
+    /* Section Paragraphs */
+    section p.description {
+      text-align: center;
+      margin-bottom: 48px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #a5bbd8cc;
+      font-size: 1.25rem;
+      line-height: 1.55;
+      font-weight: 500;
+      text-shadow: 0 0 8px #21407cbb;
+    }
+    /* Why Silent Soul - bullet style */
+    .why-list {
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      list-style: none;
+      padding: 0;
+      margin-bottom: 56px;
+      user-select:none;
+    }
+    .why-list li {
+      background: rgba(25, 50, 85, 0.65);
+      margin-bottom: 20px;
+      border-radius: 16px;
+      padding: 16px 28px;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(49, 83, 146, 0.55);
+      color: #d0dbffdd;
+      font-size: 1.12rem;
+      line-height: 1.4;
+      border-left: 4px solid #3a65d4dd;
+      user-select:none;
+      transition: background-color 0.3s ease;
+    }
+    .why-list li:hover,
+    .why-list li:focus-visible {
+      background: #1e3fa2dd;
+      outline: none;
+      cursor: default;
+      color: #f2f9ff;
+      border-left-color: #6e92ffdd;
+      box-shadow: 0 6px 24px rgba(67, 108, 243, 0.75);
+    }
+    /* How It Works steps container */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      gap: 40px;
+      margin-bottom: 32px;
+    }
+    .step {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 26px;
+      background: rgba(20, 45, 70, 0.8);
+      box-shadow: 0 6px 18px rgba(27, 57, 90, 0.7);
+      border-radius: 20px;
+      padding: 28px 36px;
+      width: 100%;
+      max-width: 640px;
+      user-select:none;
+      transition: background-color 0.3s ease;
+    }
+    .step:hover,
+    .step:focus-visible {
+      background: #13457fdd;
+      outline: none;
+      cursor: default;
+      box-shadow: 0 10px 36px rgba(53, 97, 181, 0.85);
+    }
+    .step-icon {
+      flex-shrink: 0;
+      font-size: 3.2rem;
+      color: #6c96ffcc;
+      user-select:none;
+      width: 64px;
+      height: 64px;
+      background: rgba(91,125,219,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 14px #6598f9bb inset;
+      filter: drop-shadow(0 0 6px #598ffb88);
+      transition: color 0.3s ease;
+    }
+    .step-text {
+      color: #c4dafdcc;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 0.005em;
+      user-select:none;
+    }
+    .center-button-wrapper {
+      text-align: center;
+    }
+    .btn-secondary {
+      margin-top: 28px;
+      background: transparent;
+      color: #89abff;
+      border: 2.5px solid #89abff;
+      padding: 14px 36px;
+      border-radius: 16px;
+      font-weight: 700;
+      user-select:none;
+      cursor: pointer;
+      min-width: 260px;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease, box-shadow 0.4s ease;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-secondary:hover,
+    .btn-secondary:focus {
+      background: #5474d1;
+      border-color: #5474d1;
+      color: #d5e1ff;
+      box-shadow: 0 0 22px #5474d1cc;
+      text-decoration: none;
+      outline: none;
+    }
+    /* Community & Reactions section */
+    .community-text {
+      max-width: 660px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 600;
+      color: #a0b3d9dd;
+      margin-bottom: 32px;
+      line-height: 1.65;
+      text-align: center;
+      user-select:none;
+      font-size: 1.16rem;
+      letter-spacing: 0.002em;
+    }
+    .reactions {
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      margin-bottom: 52px;
+    }
+    .reaction {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 3.6rem;
+      user-select:none;
+      color: #a3b8ffcc;
+      cursor: default;
+      line-height: 1;
+      transition: color 0.3s ease;
+      padding: 12px;
+      border-radius: 20px;
+      box-shadow: 0 0 24px rgba(55, 96, 166, 0.3);
+      user-select:none;
+      width: 96px;
+      height: 96px;
+      justify-content: center;
+      background: rgba(26, 46, 90, 0.3);
+    }
+    .reaction:hover,
+    .reaction:focus-visible {
+      color: #8dbcff;
+      box-shadow: 0 0 32px #8dbcffbb;
+      outline: none;
+      cursor: default;
+      background: rgba(52, 80, 140, 0.45);
+    }
+    .reaction-label {
+      font-size: 1.15rem;
+      margin-top: 10px;
+      font-weight: 700;
+      color: #aabdffcc;
+      user-select:none;
+    }
+    /* FAQ Section */
+    .faq-list {
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0;
+      list-style: none;
+      color: #b9cdfdcc;
+      user-select:none;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .faq-list li {
+      margin-bottom: 28px;
+      padding-left: 2.25rem;
+      position: relative;
+      user-select:none;
+    }
+    .faq-list li b {
+      color: #d2e1fff0;
+      font-weight: 700;
+    }
+    .faq-list li::before {
+      content: "Q:";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: 900;
+      color: #88a4ffcc;
+      font-size: 1.3rem;
+      user-select:none;
+    }
+    /* Responsive typography & layout */
+    @media (min-width: 320px) {
+      .container {
+        width: min(96vw, 720px);
+      }
+    }
+    @media (min-width: 480px) {
+      .container {
+        width: min(90vw, 720px);
+        padding: 0 20px 48px 20px;
+      }
+      .btn {
+        min-width: 220px;
+        height: 60px;
+        padding: 16px 36px;
+        font-size: 1.1rem;
+        border-radius: 18px;
+      }
+    }
+    @media (min-width: 640px) {
+      .hero h1 {
+        font-size: 3.9rem;
+      }
+      header.hero {
+        padding-top: 140px;
+        padding-bottom: 160px;
+      }
+      .btn {
+        font-size: 1.25rem;
+      }
+      .why-list {
+        max-width: 600px;
+        margin-bottom: 72px;
+      }
+      section p.description {
+        max-width: 680px;
+        font-size: 1.3rem;
+      }
+    }
+    @media (min-width: 768px) {
+      .steps {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 44px;
+      }
+      .step {
+        max-width: 280px;
+        flex-grow: 1;
+        padding: 32px 36px;
+      }
+      .steps .btn-secondary {
+        margin-top: 48px;
+        align-self: flex-start;
+      }
+      .community-text {
+        max-width: 720px;
+        font-size: 1.22rem;
+      }
+      .reactions {
+        gap: 72px;
+        margin-bottom: 64px;
+      }
+      .reaction {
+        font-size: 4rem;
+        width: 108px;
+        height: 108px;
+        padding: 16px;
+        border-radius: 24px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .container {
+        width: min(85vw, 900px);
+        padding: 0 28px 56px 28px;
+      }
+    }
+    @media (min-width: 1280px) {
+      .container {
+        width: min(80vw, 980px);
+      }
+      .hero h1 {
+        font-size: 4.6rem;
+      }
+      section > h2.section-title {
+        font-size: 3rem;
+      }
+      .btn {
+        min-width: 240px;
+        height: 72px;
+        font-size: 1.35rem;
+        padding: 20px 44px;
+        border-radius: 22px;
+      }
+    }
+    /* Text selection for calming read */
+    ::selection {
+      background: #476acecc;
+      color: #e1e9ff;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" role="banner">
+    <div class="starfield" aria-hidden="true"></div>
+    <div class="container">
+      <h1 tabindex="0" aria-label="Your silence deserves a voice.">Your silence deserves a voice.</h1>
+      <p>
+        Silent Soul is a space where you can anonymously vent, express, and heal — without needing an account, identity, or fear of being judged.
+      </p>
+      <a
+        href="https://silentsoul-devriad.lovable.app/"
+        class="btn"
+        role="button"
+        aria-label="Start venting and share your feelings anonymously"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Start Venting
+      </a>
+    </div>
+  </header>
+
+  <main role="main" class="container" tabindex="-1">
+    <section aria-labelledby="whyTitle">
+      <h2 id="whyTitle" class="section-title">Why Silent Soul?</h2>
+      <p class="description">
+        We all go through silent battles. Often, there’s no one to listen. Silent Soul was born out of heartbreak, loneliness, and the desire to help others release what’s bottled inside. Whether you’re hurting or healing, this is your safe corner of the internet.
+      </p>
+      <ul class="why-list" aria-label="Reasons to choose Silent Soul">
+        <li>No accounts. No tracking. Just expression.</li>
+        <li>100% anonymous — always.</li>
+        <li>Created by someone who’s been through it, too.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="howTitle">
+      <h2 id="howTitle" class="section-title">How It Works</h2>
+      <div class="steps">
+        <div class="step" role="listitem">
+          <span class="step-icon" aria-hidden="true">📝</span>
+          <span class="step-text">Write your thoughts</span>
+        </div>
+        <div class="step" role="listitem">
+          <span class="step-icon" aria-hidden="true" style="font-size:2.4rem;">🎭</span>
+          <span class="step-text" lang="en">Choose a mood <span aria-label="Sad angry face emoji" role="img">😢</span> Angry, <span aria-label="Black hole emoji" role="img">🕳️</span> Empty, <span aria-label="White dove emoji" role="img">🕊️</span> Healing…</span>
+        </div>
+        <div class="step" role="listitem">
+          <span class="step-icon material-icons" aria-hidden="true" style="font-size: 28px; line-height: 1;">lock</span>
+          <span class="step-text">Post anonymously &amp; feel the release</span>
+        </div>
+      </div>
+      <div class="center-button-wrapper">
+        <a
+          href="https://silentsoul-devriad.lovable.app/"
+          class="btn btn-secondary"
+          role="button"
+          aria-label="See what others are sharing anonymously"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          See what others are sharing
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="communityTitle">
+      <h2 id="communityTitle" class="section-title">Community &amp; Reactions</h2>
+      <p class="community-text" tabindex="0">
+        Users can support each other with emoji reactions: <span aria-label="Hug emoji" role="img">🤗</span> Hug, <span aria-label="Love heart emoji" role="img">❤️</span> Love, <span aria-label="Hands raised emoji" role="img">🙌</span> Not Alone. To keep this a safe space, there’s no comment section — only supportive reactions.
+      </p>
+      <div class="reactions" aria-label="Emoji reactions: hug, love, not alone" role="list">
+        <div class="reaction" role="listitem" tabindex="0" aria-label="Hug reaction">
+          <span aria-hidden="true">🤗</span>
+          <span class="reaction-label">Hug</span>
+        </div>
+        <div class="reaction" role="listitem" tabindex="0" aria-label="Love reaction">
+          <span aria-hidden="true">❤️</span>
+          <span class="reaction-label">Love</span>
+        </div>
+        <div class="reaction" role="listitem" tabindex="0" aria-label="Not Alone reaction">
+          <span aria-hidden="true">🙌</span>
+          <span class="reaction-label">Not Alone</span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="faqTitle">
+      <h2 id="faqTitle" class="section-title">Frequently Asked Questions</h2>
+      <ul class="faq-list">
+        <li><b>How anonymous is it?</b> Your identity is never collected or shared. You remain completely anonymous.</li>
+        <li><b>Will anyone know who I am?</b> No, the site does not track, store accounts, or collect personal data.</li>
+        <li><b>Is it safe for mental health?</b> We prioritize a supportive environment without negativity; this is not a substitute for professional help.</li>
+        <li><b>Is this free?</b> Yes, Silent Soul is completely free to use.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // Simple starfield animation for hero background
+    const STAR_COUNT = 60;
+    const starfield = document.querySelector('.starfield');
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      const size = random(1, 3);
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.top = random(0, 100) + '%';
+      star.style.left = random(0, 100) + '%';
+      star.style.animationDelay = random(0, 3) + 's';
+      starfield.appendChild(star);
+    }
+
+    for (let i = 0; i < STAR_COUNT; i++) {
+      createStar();
+    }
+  </script>
+</body>
+</html>
